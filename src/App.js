@@ -1,8 +1,9 @@
+import TextareaComponent from "./components/TextareaComponent";
 
 function App() {
   return (
     <div className="App">
-      <h1>working</h1>
+      <TextareaComponent/>
     </div>
   );
 }
