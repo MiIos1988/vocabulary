@@ -7,11 +7,14 @@ const vocabularySlice = createSlice({
   initialState,
   reducers: {
     vocabularyArrayFun(state, action) {
-        state.value = action.payload
+      state.value = action.payload
     },
-    
+    deleteWordInArray(state, action) {
+      state.value.splice(action.payload, 1);
+    }
+
   },
 })
 
-export const { vocabularyArrayFun} = vocabularySlice.actions
+export const { vocabularyArrayFun, deleteWordInArray } = vocabularySlice.actions
 export default vocabularySlice.reducer
