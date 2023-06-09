@@ -7,7 +7,7 @@ import VocabularyComponent from './components/VocabularyComponent';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import vocabularyArray from './redux/vocabularyArray';
+import vocabularySlice from './redux/vocabularyArray'
 
 const router = createBrowserRouter([
   {path: '/',
@@ -24,7 +24,10 @@ const router = createBrowserRouter([
   ]}
 ]);
 
-const store = configureStore({ reducer: {vocabularySlice: vocabularyArray} })
+
+  const store = configureStore({
+    reducer: { vocabularySlice },
+  })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

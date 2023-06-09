@@ -6,12 +6,12 @@ const vocabularySlice = createSlice({
   name: 'vocabulary',
   initialState,
   reducers: {
-    vocabularyArray(state, action) {
-        state.value = [...state.value, action.payload]
+    vocabularyArrayFun(state, action) {
+        state.value = action.payload
     },
     
   },
 })
 
-export const { vocabularyArray} = vocabularySlice.actions
+export const { vocabularyArrayFun} = vocabularySlice.actions
 export default vocabularySlice.reducer

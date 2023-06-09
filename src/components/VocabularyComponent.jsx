@@ -1,8 +1,8 @@
-import { createSelector } from '@reduxjs/toolkit'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const VocabularyComponent = () => {
-    const vocabularySelector = createSelector((state) => state.vocabularyArray)
+    const vocabularySelector = useSelector((state) => state.vocabularySlice.value)
     console.log(vocabularySelector)
   return (
     <div className='container'>

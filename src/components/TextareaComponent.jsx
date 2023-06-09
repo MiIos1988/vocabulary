@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import vocabularyArray from '../redux/vocabularyArray';
+import { vocabularyArrayFun } from '../redux/vocabularyArray';
 
 const TextareaComponent = () => {
     const [enterText, setEnterText] = useState('');
@@ -12,7 +12,7 @@ const TextareaComponent = () => {
        const arrayText = enterText.split(" ");
        const filterText = arrayText.filter(el => el.length > 3)
        const uniqueText = [...new Set(filterText)]
-       dispatch(vocabularyArray(uniqueText))
+       dispatch(vocabularyArrayFun(uniqueText))
        navigate("/vocabulary")
     }
 
