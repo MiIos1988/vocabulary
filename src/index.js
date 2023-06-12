@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import vocabularySlice from './redux/vocabularyArray'
+import './index.scss'
 
 const router = createBrowserRouter([
   {path: '/',

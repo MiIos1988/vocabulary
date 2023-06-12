@@ -1,42 +1,59 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { translate } from '../serises/translate'
-import { deleteWordInArray } from '../redux/vocabularyArray'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { translate } from "../serises/translate";
+import { deleteWordInArray } from "../redux/vocabularyArray";
 
 const VocabularyComponent = () => {
-  const dispatch = useDispatch()
-  
-  const vocabularySelector = useSelector((state) => state.vocabularySlice.value)
+  const dispatch = useDispatch();
+  const [translatedWord, setTranslatedWord] = useState("");
+  const [selectedWordIndex, setSelectedWordIndex] = useState(null);
 
-  useEffect(() => {
-  },[vocabularySelector]
-  )
-
+  const vocabularySelector = useSelector(
+    (state) => state.vocabularySlice.value
+  );
 
   const deleteWord = (index) => {
-    dispatch(deleteWordInArray(index))
-  }
+    dispatch(deleteWordInArray(index));
+    setSelectedWordIndex();
+  };
+
+  const translateWordFun = (word) => {
+    translate(word).then((res) => {
+      console.log(word);
+      setTranslatedWord(res.data.matches[0].translation);
+    });
+  };
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Vocabulary</h1>
-      {
-        vocabularySelector.map((el, index) => {
-          // translate(el)
-          //   .then(res => {
-          //     // console.log(res.data.matches[0].translation)
-          //   })
-          return (
-            <div key={index}>
-              <p onClick={e => console.log(e.target.textContent)} className='mb-0' >{el}</p>
-              <button onClick={() => deleteWord(index)} className='btn btn-sm btn-danger'>Delete</button>
+      {vocabularySelector.map((el, index) => {
+        return (
+          <div key={index}>
+            <div className="d-flex" >
+              <div 
+                onClick={(e) => {
+                  translateWordFun(e.target.textContent);
+                  setSelectedWordIndex(index);
+                }}
+                className="mb-0 englishWord"
+              >
+                {el}
+              </div>
+              {index === selectedWordIndex ? <p className="result">  {translatedWord}</p> : <p className="result"></p>}
+              <button
+                onClick={() => deleteWord(index)}
+                className="btn btn-sm btn-danger me-2"
+              >
+                Delete
+              </button>
             </div>
-          )
-        })
-      }
-
+            <hr />
+          </div>
+        );
+      })}
     </div>
-  )
-}
+  );
+};
 
-export default VocabularyComponent
+export default VocabularyComponent;
