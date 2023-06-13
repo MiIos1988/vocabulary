@@ -11,7 +11,6 @@ const TextareaComponent = () => {
     const makeArray = () => {
        const arrayText = enterText.split(/\s+/)
        .map(word => word.replace(/\n|,|\./g, " "));
-       console.log(arrayText)
        const filterText = arrayText.filter(el => el.length > 3)
        const uniqueText = [...new Set(filterText)]
        dispatch(vocabularyArrayFun(uniqueText))
