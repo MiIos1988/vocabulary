@@ -1,4 +1,4 @@
 import axios from "axios";
 
 
-export const translate = (word) => axios(`https://mymemory.translated.net/api/get?q=${word}&langpair=en|sr`);
+export const translate = (word) => axios(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(word)}&langpair=en|sr`);
