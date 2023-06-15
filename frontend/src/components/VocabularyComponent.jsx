@@ -7,6 +7,12 @@ const VocabularyComponent = () => {
   const dispatch = useDispatch();
   const [translatedWord, setTranslatedWord] = useState("");
   const [selectedWordIndex, setSelectedWordIndex] = useState(null);
+  const [allDeleteWord, setAllDeleteWord] = useState([])
+
+  useEffect(() => {
+    console.log(allDeleteWord)
+  },[allDeleteWord]
+  )
 
   const vocabularySelector = useSelector(
     (state) => state.vocabularySlice.value
@@ -15,6 +21,7 @@ const VocabularyComponent = () => {
   const deleteWord = (index) => {
     dispatch(deleteWordInArray(index));
     setSelectedWordIndex();
+    setAllDeleteWord([...allDeleteWord, vocabularySelector[index]])
   };
 
   const translateWordFun = (word) => {
