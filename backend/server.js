@@ -10,7 +10,6 @@ async function prepareFile() {
     const allFiles = await fs.promises.readdir(
         path.join(__dirname, 'initialFile')
     );
-
     const docxFiles = allFiles.filter(file => file.endsWith("docx"))
     const docxData = await readDocx(docxFiles)
 }
