@@ -14,7 +14,10 @@ const NavbarComponent = () => {
           <NavLink className="nav-link" to="/vocabulary">Vocabulary</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/vocabulary">Verbs</NavLink>
+          <NavLink className="nav-link" to="/verbs">Verbs</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/test">Learning verbs</NavLink>
         </li>
       </ul>
     </div>

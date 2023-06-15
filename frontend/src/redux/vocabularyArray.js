@@ -1,18 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { value: [] }
+const initialState = { vocabulary: [], verbs: [] }
 
 const vocabularySlice = createSlice({
   name: 'vocabulary',
   initialState,
   reducers: {
     vocabularyArrayFun(state, action) {
-      state.value = action.payload
+      state.vocabulary = action.payload
     },
     deleteWordInArray(state, action) {
-      state.value.splice(action.payload, 1);
-    }
-
+      state.vocabulary.splice(action.payload, 1);
+    },
   },
 })
 

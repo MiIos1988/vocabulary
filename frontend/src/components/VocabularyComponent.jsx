@@ -15,7 +15,7 @@ const VocabularyComponent = () => {
   )
 
   const vocabularySelector = useSelector(
-    (state) => state.vocabularySlice.value
+    (state) => state.vocabularySlice.vocabulary
   );
 
   const deleteWord = (index) => {
