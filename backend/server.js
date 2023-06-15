@@ -1,17 +1,13 @@
 const express = require('express');
 const PORT = 5500;
 const fs = require('fs');
-const path = require('path');
-const { readDocx } = require('./readDocx');
 
 const app = express();
 
 async function prepareFile() {
-    const allFiles = await fs.promises.readdir(
-        path.join(__dirname, 'initialFile')
-    );
-    const docxFiles = allFiles.filter(file => file.endsWith("docx"))
-    const docxData = await readDocx(docxFiles)
+    const readTxt = await fs.promises.readFile('./initialFile/verbs.txt', "utf-8");
+    const arrayText = readTxt.split('\n')
+    console.log(arrayText[0])
 }
 
 prepareFile()
