@@ -4,13 +4,15 @@ const fs = require('fs');
 
 const app = express();
 
-async function prepareFile() {
+app.get('/verbs', async (req, res) => {
     const readTxt = await fs.promises.readFile('./initialFile/verbs.txt', "utf-8");
-    const arrayText = readTxt.split('\n')
-    console.log(arrayText[0])
-}
+    const arrayText = readTxt.split('\n').map(line => line.trim());
+    console.log(arrayText)
+    res.json(arrayText)
 
-prepareFile()
+})
+
+
 
 
 
