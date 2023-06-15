@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { translate } from "../serises/translate";
+import { translate } from "../services/translate";
 import { deleteWordInArray } from "../redux/vocabularyArray";
 
 const VocabularyComponent = () => {

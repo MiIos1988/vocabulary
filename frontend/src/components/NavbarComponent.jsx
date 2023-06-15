@@ -13,6 +13,9 @@ const NavbarComponent = () => {
         <li className="nav-item">
           <NavLink className="nav-link" to="/vocabulary">Vocabulary</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/vocabulary">Verbs</NavLink>
+        </li>
       </ul>
     </div>
   </div>
