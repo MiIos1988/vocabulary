@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import vocabularySlice from './redux/vocabularyArray'
 import './index.scss'
+import VerbsComponent from './components/VerbsComponent';
 
 const router = createBrowserRouter([
   {path: '/',
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     {
       path: 'vocabulary',
       element: <VocabularyComponent/>
+    },
+    {
+      path: 'verbs',
+      element: <VerbsComponent/>
     }
   ]}
 ]);
