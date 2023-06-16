@@ -17,8 +17,8 @@ const LearningVerbsComponent = () => {
   const writeOneWord = (string) => {
     let start_index = string.indexOf("-") + 2;
     let end_index = string.indexOf("(") - 1;
-    let b = string.substring(start_index, end_index);
-    setRandomWord(b)
+    let oneWord = string.substring(start_index, end_index);
+    setRandomWord(oneWord)
   }
 
   return (
@@ -37,9 +37,9 @@ const LearningVerbsComponent = () => {
           <div className='d-flex justify-content-center mt-5'>
             <h2>{randomString}</h2>
             <button className='btn btn-primary ms-5' onClick={() => {
-              const a = arrayVerbs[randomNumber];
-              setRandomString(a)
-              writeOneWord(a)
+              const newString = arrayVerbs[randomNumber];
+              setRandomString(newString)
+              writeOneWord(newString)
               setSingleWord(true)
 
             }}>Next verb</button>
