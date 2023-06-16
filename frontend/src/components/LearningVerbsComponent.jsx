@@ -22,21 +22,23 @@ const LearningVerbsComponent = () => {
   }
 
   return (
-    <div>
-      {singleWord ? <div className='d-flex justify-content-center mt-5'>
+    <div className='container'>
+      {singleWord ? 
+      <div>
+        <div className='d-flex justify-content-center mt-5'>
         <h2>{randomWord}</h2>
         <button className='btn btn-primary ms-5' onClick={() => {
           setSingleWord(false);
           const random = Math.floor(Math.random() * arrayVerbs.length)
           setRandomNumber(random);
-
-
         }}>View translate</button>
+        </div>
+        <input className='form-control my-4' type="text" placeholder='Write a sentence using this verb!' />
       </div>
         : <>
-          <div className='d-flex justify-content-center mt-5'>
-            <h2>{randomString}</h2>
-            <button className='btn btn-primary ms-5' onClick={() => {
+          <div className='d-lg-flex justify-content-center mt-5 text-center'>
+            <h2 className='text-center'>{randomString}</h2>
+            <button className='btn btn-primary ms-lg-5' onClick={() => {
               const newString = arrayVerbs[randomNumber];
               setRandomString(newString)
               writeOneWord(newString)
@@ -44,7 +46,7 @@ const LearningVerbsComponent = () => {
 
             }}>Next verb</button>
           </div>
-          <input className='form-control m-5' type="text" placeholder='Write a sentence using this verb!' />
+          <input className='form-control my-4' type="text" placeholder='Write a sentence using this verb!' />
         </>
       }
 
