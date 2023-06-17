@@ -10,8 +10,8 @@ const VerbsComponent = () => {
     )
     return arrayVerbs && arrayVerbs.map((verbs, index) => {
         return (
-            <div className='bg-light divVerbs ' key={index}>
-                <p className='text-center fs-5'>{verbs}</p>
+            <div className=' divVerbs text-center' key={index}>
+                <p className='text-center fs-2'>{verbs}</p>
                 <hr className=' m-0'/>
             </div>
         )

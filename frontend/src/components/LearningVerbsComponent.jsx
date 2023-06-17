@@ -57,7 +57,7 @@ const LearningVerbsComponent = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container ">
       {singleWord ? (
         <div className="text-center">
           <div className="d-flex justify-content-center mt-5">
