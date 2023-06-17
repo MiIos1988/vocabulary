@@ -8,7 +8,8 @@ const LearningVerbsComponent = () => {
   const [randomString, setRandomString] = useState("run - trčati (rʌn)");
   const [randomWord, setRandomWord] = useState("trčati");
   const [singleWord, setSingleWord] = useState(true);
-  const [attempt, setAttempt] = useState('')
+  const [attempt, setAttempt] = useState("");
+  const [englishWord, setEnglishWord] = useState("");
   const inputRef = useRef();
 
   useEffect(() => {
@@ -21,6 +22,10 @@ const LearningVerbsComponent = () => {
     }
   }, [singleWord]);
 
+  useEffect(() => {
+    writeEnglishVerbs(randomString);
+  }, [randomString]);
+
   const writeOneWord = (string) => {
     let start_index = string.indexOf("-") + 2;
     let end_index = string.indexOf("(") - 1;
@@ -28,26 +33,33 @@ const LearningVerbsComponent = () => {
     setRandomWord(oneWord);
   };
 
+  const writeEnglishVerbs = (string) => {
+    let end_index = string.indexOf("-") - 1;
+    let oneWord = string.substring(0, end_index);
+    setEnglishWord(oneWord);
+  };
+
   const handlerPressKey = (e, isTrue) => {
-   if( e.key === "Enter") {
-    if(!isTrue){
-     setSingleWord(false);
-     const random = Math.floor(Math.random() * arrayVerbs.length);
-    setRandomNumber(random);
-    setAttempt('');
-    }else{
-    const newString = arrayVerbs[randomNumber];
-    setRandomString(newString);
-    writeOneWord(newString);
-    setSingleWord(true);
-   }
-  }
+    if (e.key === "Enter") {
+      if (!isTrue) {
+        setSingleWord(false);
+        const random = Math.floor(Math.random() * arrayVerbs.length);
+        setRandomNumber(random);
+        setAttempt("");
+      } else {
+        const newString = arrayVerbs[randomNumber];
+        setRandomString(newString);
+        writeOneWord(newString);
+        // writeEnglishVerbs(newString);
+        setSingleWord(true);
+      }
+    }
   };
 
   return (
     <div className="container">
       {singleWord ? (
-        <div>
+        <div className="text-center">
           <div className="d-flex justify-content-center mt-5">
             <h2>{randomWord}</h2>
             <button
@@ -56,7 +68,7 @@ const LearningVerbsComponent = () => {
                 setSingleWord(false);
                 const random = Math.floor(Math.random() * arrayVerbs.length);
                 setRandomNumber(random);
-                setAttempt('');
+                setAttempt("");
               }}
             >
               View translate
@@ -68,9 +80,15 @@ const LearningVerbsComponent = () => {
             placeholder="Write the verb correctly!"
             onKeyDown={(event) => handlerPressKey(event, false)}
             ref={inputRef}
-            onChange={e => setAttempt( e.target.value)}
+            onChange={(e) => setAttempt(e.target.value)}
           />
-          <p className="my-4 fs-1 text-center">{attempt}</p>
+          <p
+            className={`my-4 fs-1 px-3 ${
+              englishWord === attempt ? "guess" : "miss"
+            }`}
+          >
+            {attempt}
+          </p>
         </div>
       ) : (
         <>
@@ -82,6 +100,7 @@ const LearningVerbsComponent = () => {
                 const newString = arrayVerbs[randomNumber];
                 setRandomString(newString);
                 writeOneWord(newString);
+                // writeEnglishVerbs(newString);
                 setSingleWord(true);
               }}
             >
