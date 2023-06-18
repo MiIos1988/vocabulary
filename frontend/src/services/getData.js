@@ -2,4 +2,4 @@
 import axios from "axios";
 
 
-export const getVerbs = () => axios('http://localhost:5500/verbs');
+export const getVerbs = () => axios('https://vocabulary-service.onrender.com/verbs');
