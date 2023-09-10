@@ -50,7 +50,6 @@ const LearningVerbsComponent = () => {
         const newString = arrayVerbs[randomNumber];
         setRandomString(newString);
         writeOneWord(newString);
-        // writeEnglishVerbs(newString);
         setSingleWord(true);
       }
     }
