@@ -79,7 +79,7 @@ const LearningVerbsComponent = () => {
             placeholder="Write the verb correctly!"
             onKeyDown={(event) => handlerPressKey(event, false)}
             ref={inputRef}
-            onChange={(e) => setAttempt(e.target.value)}
+            onChange={(e) => setAttempt(e.target.value.toLowerCase())}
           />
           <p
             className={`my-4 fs-1 px-3 ${
