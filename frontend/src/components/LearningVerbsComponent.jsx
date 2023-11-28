@@ -27,14 +27,14 @@ const LearningVerbsComponent = () => {
   }, [randomString]);
 
   const writeOneWord = (string) => {
-    let start_index = string.indexOf("-") + 2;
+    let start_index = string?.indexOf("-") + 2;
     let end_index = string.indexOf("(") - 1;
     let oneWord = string.substring(start_index, end_index);
     setRandomWord(oneWord);
   };
 
   const writeEnglishVerbs = (string) => {
-    let end_index = string.indexOf("-") - 1;
+    let end_index = string?.indexOf("-") - 1;
     let oneWord = string.substring(0, end_index);
     setEnglishWord(oneWord);
   };
