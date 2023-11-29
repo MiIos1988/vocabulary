@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import { getVerbs } from "../services/getData";
 
 const LearningVerbsComponent = () => {
@@ -13,7 +12,15 @@ const LearningVerbsComponent = () => {
   const inputRef = useRef();
 
   useEffect(() => {
-    getVerbs().then((res) => setArrayVerbs(res.data));
+    const fetchData = async () => {
+      try {
+        const res = await getVerbs();
+        setArrayVerbs(res.data);
+      } catch (error) {
+        console.log("Error retrieving data", error);
+      }
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -99,7 +106,6 @@ const LearningVerbsComponent = () => {
                 const newString = arrayVerbs[randomNumber];
                 setRandomString(newString);
                 writeOneWord(newString);
-                // writeEnglishVerbs(newString);
                 setSingleWord(true);
               }}
             >
