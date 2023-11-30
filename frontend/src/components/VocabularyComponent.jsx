@@ -7,12 +7,7 @@ const VocabularyComponent = () => {
   const dispatch = useDispatch();
   const [translatedWord, setTranslatedWord] = useState("");
   const [selectedWordIndex, setSelectedWordIndex] = useState(null);
-  const [allDeleteWord, setAllDeleteWord] = useState([])
-
-  useEffect(() => {
-    console.log(allDeleteWord)
-  },[allDeleteWord]
-  )
+  const [allDeleteWord, setAllDeleteWord] = useState([]);
 
   const vocabularySelector = useSelector(
     (state) => state.vocabularySlice.vocabulary
@@ -21,7 +16,7 @@ const VocabularyComponent = () => {
   const deleteWord = (index) => {
     dispatch(deleteWordInArray(index));
     setSelectedWordIndex();
-    setAllDeleteWord([...allDeleteWord, vocabularySelector[index]])
+    setAllDeleteWord([...allDeleteWord, vocabularySelector[index]]);
   };
 
   const translateWordFun = (word) => {
@@ -37,8 +32,8 @@ const VocabularyComponent = () => {
       {vocabularySelector.map((el, index) => {
         return (
           <div key={index}>
-            <div className="d-flex" >
-              <div 
+            <div className="d-flex">
+              <div
                 onClick={(e) => {
                   translateWordFun(e.target.textContent);
                   setSelectedWordIndex(index);
@@ -47,7 +42,11 @@ const VocabularyComponent = () => {
               >
                 {el}
               </div>
-              {index === selectedWordIndex ? <p className="result">  {translatedWord}</p> : <p className="result"></p>}
+              {index === selectedWordIndex ? (
+                <p className="result"> {translatedWord}</p>
+              ) : (
+                <p className="result"></p>
+              )}
               <button
                 onClick={() => deleteWord(index)}
                 className="btn btn-sm btn-danger me-2"
